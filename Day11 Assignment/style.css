@@ -1,0 +1,63 @@
+@font-face {
+  font-family: gilroyRegular;
+  src: url(./gilroy/Gilroy-Regular.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.michroma-regular {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2128);
+  background-size: cover;
+  color: white;
+}
+
+body h1 {
+  padding-top: 100px;
+  text-align: center;
+  font-size: 5vw;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.box button {
+  font-size: 1vw;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  font-weight: 900;
+  font-family: gilroyRegular;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+
+.box button:hover {
+  scale: 1.1;
+  box-shadow: 0px 0px 30px white;
+}

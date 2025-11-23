@@ -1,0 +1,277 @@
+@font-face {
+  font-family: ChillaxReg;
+  src: url(./Chillax-Regular.woff);
+}
+
+@font-face {
+  font-family: SatoshiLight;
+  src: url(./Satoshi-Light.woff);
+}
+
+@font-face {
+  font-family: Font1;
+  src: url(./Font1.woff2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Font1;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: rgb(15, 15, 15);
+}
+
+// Same doubt solved for syntaxCoder
+html {
+  font-size: clamp(14px, 1vw, 18px);
+}
+
+@mixin flexCenter($alignItems: center, $justifyContent: center) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+
+main {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  color: white;
+  gap: 1rem;
+
+  .page1 {
+    max-width: 2000px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left {
+      width: 100%;
+      img {
+        border-radius: 10px;
+        width: 100%;
+      }
+    }
+
+    .right {
+      background-color: rgb(28, 28, 28);
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 10px;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+
+    .right h1 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .rightBottom > p {
+      color: rgba(255, 255, 255, 0.332);
+      font-family: SatoshiLight;
+      font-size: 1.5rem;
+    }
+
+    .rightBottom i {
+      padding: 1rem;
+      border: 1px solid gray;
+      border-radius: 50%;
+    }
+
+    .OurStory {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .rightBottom {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  .page2 {
+    max-width: 2000px;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 2rem;
+
+    .page2Top,
+    .page2Bottom {
+      display: flex;
+      gap: 5rem;
+      h1 {
+        font-size: 3rem;
+      }
+
+      .topLeft,
+      .topRight,
+      .bottomLeft,
+      .bottomRight {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      h3,
+      h1 {
+        font-family: SatoshiLight;
+      }
+    }
+  }
+
+  .page3 {
+    max-width: 2000px;
+    padding: 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left {
+      width: 100%;
+      img {
+        border-radius: 10px;
+        width: 100%;
+      }
+    }
+
+    .right {
+      background-color: rgb(28, 28, 28);
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 10px;
+      padding: 1rem;
+      gap: 4rem;
+    }
+
+    .right h1 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .rightBottom > p {
+      color: rgba(255, 255, 255, 0.332);
+    }
+
+    .rightBottom {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .para {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .para p {
+      font-family: SatoshiLight;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.444);
+    }
+  }
+
+  .page4 {
+    width: 100%;
+    max-width: 2000px;
+    padding: 1rem;
+    gap: 1rem;
+    h1 {
+      font-family: SatoshiLight;
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+      padding: 1rem 0rem;
+    }
+    .card1 {
+      border-radius: 1rem;
+      background-image: url(https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbd7d003dfb6a1bdecb_team-01.webp);
+      background-size: cover;
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // align-items: center;
+
+      .top,
+      .bottom {
+        // padding: 1rem;
+      }
+
+      .top {
+        display: flex;
+        gap: 1rem;
+        // float: right;
+        justify-content: flex-end;
+      }
+
+      .top i {
+        backdrop-filter: blur(10px);
+        background-color: rgba(240, 240, 240, 0.178);
+        border: 1px solid white;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+
+      .bottom {
+        width: 95%;
+        backdrop-filter: blur(10px);
+        background-color: rgba(240, 240, 240, 0.178);
+        border: 1px solid white;
+        border-radius: 0.4rem;
+        display: flex;
+        padding: 1.3rem 1rem;
+        gap: 1rem;
+        justify-content: space-between;
+        margin-bottom: 1.4rem;
+        align-self: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  main {
+    .page1 {
+      flex-direction: row;
+      .left,
+      .right {
+        width: 50%;
+      }
+    }
+  }
+}

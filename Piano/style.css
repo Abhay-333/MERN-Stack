@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(27, 27, 27);
+}
+body .box {
+  border-radius: 10px;
+  width: 750px;
+  height: 200px;
+  display: flex;
+  position: relative;
+}
+body .box .key {
+  background-color: rgb(228, 228, 228);
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  width: 40px;
+}
+body .box .key:hover {
+  cursor: pointer;
+  background-color: rgb(192, 192, 192);
+}
+body .box .key-right {
+  position: relative;
+}
+body .box .key-right span {
+  display: inline-block;
+  height: 60%;
+  width: 70%;
+  top: -1%;
+  left: 70%;
+  position: absolute;
+  background-color: rgb(40, 40, 40);
+  border-radius: 7px;
+  z-index: 999;
+}/*# sourceMappingURL=style.css.map */

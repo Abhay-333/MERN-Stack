@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+body {
+  padding: 1.5vw;
+}
+
+@mixin heightWidth($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin backgroundImg($url, $size, $position) {
+  background-image: url($url);
+  background-position: $position;
+  background-size: $size;
+}
+
+main {
+  overflow: hidden;
+  @include heightWidth(100%, 100%);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 55% 1fr;
+  border: 2px solid rgba(128, 128, 128, 0.259);
+  grid-template-areas:
+    "left rightTop"
+    "left bottom";
+
+  padding: 1vw;
+
+  section:nth-child(1) {
+    @include backgroundImg(
+      "https://i.pinimg.com/736x/e9/dd/61/e9dd61a6ca5efff1eabeba127da80d2e.jpg",
+      cover,
+      center
+    );
+    grid-area: left;
+    background-color: red;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+
+  section:nth-child(2) {
+    background-color: blue;
+    border: 1px solid gray;
+    @include backgroundImg(
+      "https://i.pinimg.com/736x/80/c1/00/80c1009e693609f617bb29bed0707ed5.jpg",
+      cover,
+      center
+    );
+  }
+
+  section:nth-child(3) {
+    // @include backgroundImg(
+    // "https://i.pinimg.com/736x/54/fd/37/54fd37fcb5420e7c440af8fda869d3cb.jpg",
+    //   cover,
+    //   center
+    // );
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    .box1,
+    .box2,
+    .box3 {
+      border-radius: 10px;
+      @include heightWidth(95%, 30%);
+      background-color: red;
+    }
+
+    .box1 {
+      @include backgroundImg(
+        "https://i.pinimg.com/736x/54/fd/37/54fd37fcb5420e7c440af8fda869d3cb.jpg",
+        cover,
+        center
+      );
+    }
+    
+    .box2 {
+      @include backgroundImg(
+        "https://i.pinimg.com/736x/58/d8/29/58d82927abe58a2179e1396292c5addb.jpg",
+        cover,
+        center
+      );
+    }
+    
+    .box3 {
+      @include backgroundImg(
+        "https://i.pinimg.com/736x/b2/f8/72/b2f8720426c4fffe008762124d5c552d.jpg",
+        cover,
+        center
+      );
+    }
+  }
+}

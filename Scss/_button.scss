@@ -1,0 +1,5 @@
+// Partials and import example
+@mixin buttonBlue($bg-color: blue) {
+  // Example of Mixins with arguments
+  background-color: $bg-color;
+}

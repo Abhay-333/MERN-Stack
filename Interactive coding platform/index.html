@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./Components/Navbar/navbar.js"></script>
+  </head>
+  <style>
+    #loadingScreen {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.562);
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+    }
+
+    nav{
+      background-color: red;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <!-- <Navbar></Navbar> -->
+     <nav>
+      <div class="left">
+        <h1>Logo</h1>
+      </div>
+
+      <div class="right">
+        <h1>Logo</h1>
+        <h1>Logo</h1>
+        <h1>Logo</h1>
+      </div>
+     
+    </nav>
+    <div>
+
+      <div class="heroSection">
+        <h1 class="heroText2"></h1>
+
+        <h1 class="heroText">
+          Welcome Coders!!!; <br />
+          🚀 Empower Your Learning Journey
+        </h1>
+
+        <h3>
+          Master new skills with structured resources, hands-on practice, and
+          expert guidance—all in one platform!
+        </h3>
+
+        <p>
+          Welcome to the Learning Platform, designed to empower both students
+          and teachers in their educational journey. Whether you're seeking
+          tailored learning resources, engaging coding challenges, or a space to
+          track your progress, we've got everything you need. Begin your
+          learning adventure today and elevate your skills to new heights!
+        </p>
+
+        <button class="btn">
+          Dive into Coding <i class="ri-corner-down-left-line"></i>
+        </button>
+      </div>
+    </div>
+    <div id="loadingScreen" style="display: none">
+      <h2>Loading...</h2>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
