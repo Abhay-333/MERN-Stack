@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="./Components/Navbar/navbar.js"></script>
+    <script type="module" src="./Components/Navbar/navbar.js" ></script>
   </head>
   <style>
     #loadingScreen {
@@ -23,32 +23,19 @@
       backdrop-filter: blur(4px);
     }
 
-    nav{
-      background-color: red;
-      width: 100%;
-    }
+    
+
   </style>
   <body>
-    <!-- <Navbar></Navbar> -->
-     <nav>
-      <div class="left">
-        <h1>Logo</h1>
-      </div>
-
-      <div class="right">
-        <h1>Logo</h1>
-        <h1>Logo</h1>
-        <h1>Logo</h1>
-      </div>
-     
-    </nav>
+    <custom-nav></custom-nav>
+    
     <div>
 
       <div class="heroSection">
         <h1 class="heroText2"></h1>
 
         <h1 class="heroText">
-          Welcome Coders!!!; <br />
+          Welcome Coders!!! <br />
           🚀 Empower Your Learning Journey
         </h1>
 
@@ -70,6 +57,7 @@
         </button>
       </div>
     </div>
+    
     <div id="loadingScreen" style="display: none">
       <h2>Loading...</h2>
     </div>

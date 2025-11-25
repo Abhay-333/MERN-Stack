@@ -32,6 +32,49 @@ body {
   color: white;
   font-family: gilroyLight;
   font-size: clamp(13px, 14px, 18px);
+  position: relative;
+
+  custom-nav {
+    position: fixed;
+    top: 0;
+    background-color: rgb(42, 42, 42);
+    width: 100%;
+    padding: 0.8rem 3rem;
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left {
+        h1 {
+          font-size: 2.3rem;
+          font-family: gilroyBold;
+        }
+      }
+
+      .right {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 27%;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 900;
+        
+        a{
+          transition: all 0.3s ease-in-out;
+        }
+        
+        a:hover{
+          // color: rgb(0, 0, 255);
+          scale:1.1;
+          //  transition: 0.2s ease, 0.2s ease;
+        }
+
+      }
+    }
+  }
 }
 
 .heroSection {
