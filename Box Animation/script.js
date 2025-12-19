@@ -1,5 +1,5 @@
 const box =  document.querySelector(".box")
-box.addEventListener("mouseenter",()=>{
+// box.addEventListener("mouseenter",()=>{
     
-})
-console.log("asd")
+// })
+// console.log("asd")

@@ -50,16 +50,16 @@ body {
   height: 65%;
   color: white;
   max-width: 350px;
-  box-shadow: 0px 0px 60px rgb(255, 0, 153);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(black) padding-box, conic-gradient(from var(--rotate), black, rgb(255, 0, 153), black) border-box;
-  border: 5px solid rgba(0, 0, 0, 0);
+  border: 0px solid rgba(0, 0, 0, 0);
   animation-name: rotateBorder;
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  animation-play-state: paused;
   transition: all 0.2s ease-in;
 }
 .box h1 {
@@ -75,4 +75,9 @@ body {
 .box:hover {
   color: rgb(255, 0, 153);
   transform: scale(1.04);
+  animation-play-state: running;
+  box-shadow: 0px 0px 60px rgb(255, 0, 153);
+  border: 5px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  text-shadow: 0px 0px 10px rgb(255, 0, 153);
 }/*# sourceMappingURL=style.css.map */
