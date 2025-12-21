@@ -1,4 +1,4 @@
-const revealMe = document.querySelector(".box h1");
+git const revealMe = document.querySelector(".box h1");
 const box = document.querySelector(".box");
 const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const text = revealMe.innerText;
