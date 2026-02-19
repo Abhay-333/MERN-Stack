@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+main .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 30px;
+  width: 100%;
+}
+main .container .btn {
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: bisque;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+main .container .box1,
+main .container .box2 {
+  text-align: center;
+}
+main .container .box1 .dice,
+main .container .box2 .dice {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+main .container .box1 .dot,
+main .container .box2 .dot {
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  opacity: 0;
+}/*# sourceMappingURL=style.css.map */

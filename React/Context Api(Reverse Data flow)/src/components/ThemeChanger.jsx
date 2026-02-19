@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 const ThemeChanger = (props) => {
     const [newTheme, setNewTheme] = useState("")
     
-    
-
     return (
     <div>
         <form onSubmit={(e)=>{
