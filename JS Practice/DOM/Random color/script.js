@@ -7,56 +7,53 @@
 const btn = document.querySelector("button");
 const container = document.querySelector(".container");
 
-const containerWidth = 1200
-const cardWidth = 240
-const gap = 20
+console.log()
 
+const containerWidth = parseInt(getComputedStyle(container).width);
+const cardWidth = 240;
+const gap = 20;
 
 // inclusive range
-function generateRandomColor(min, max) {
+function generateRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-console.log(generateRandomColor(1,20))
-const numberOfColumn = Math.floor(1200 / 260); // 1200px container ka size, 240px card ka width, 20px gap between cards
+const numberOfColumn = Math.floor(containerWidth / (cardWidth + gap)); // 1200px container ka size, 240px card ka width, 20px gap between cards
 const columnHeights = new Array(numberOfColumn).fill(0);
+let idCounter = 0
 
 btn.addEventListener("click", function () {
-  const rgba = `rgba(${generateRandomColor(256)}, ${generateRandomColor(256)}, ${generateRandomColor(256)}, ${Math.random().toFixed(3)})`;
+  const rgba = `rgba(${generateRandomRange(0,255)}, ${generateRandomRange(0,255)}, ${generateRandomRange(0,255)})`;
+  const randomHeight = generateRandomRange(200, 500);
 
-  const randomHeight = () => Math.floor(Math.random() * (500 - 200 + 1) + 200);
-
-  for (let i = 0; i < columnHeights.length; i++) {
-    columnHeights[i] = randomHeight();
-  }
-
-  let i = 0,
-    j = columnHeights.length - 1;
-  while (i <= j) {
-    if (columnHeights[i] <= columnHeights[j]) {
-      j--;
-    } else {
-      i++;
+  let minIndex = 0
+  
+  for (let i = 1; i < columnHeights.length; i++) {
+    if(columnHeights[i] < columnHeights[minIndex]){
+      minIndex = i
     }
   }
 
-  console.log(columnHeights);
-  let columnIndex = i;
-  columnHeights[i] += 260;
-
+  // calculate the position of card
+  const left = minIndex * (cardWidth + gap);
+  const top = columnHeights[minIndex];
+  
   const card = document.createElement("div");
-  const left = columnIndex * 260;
-  const top = columnHeights[columnIndex];
-  console.log(left, top);
-
-  card.style.height = randomHeight + "px";
-  card.style.width = 240 + "px";
-  card.style.borderRadius = "10px";
+  card.setAttribute("data-id",idCounter++)
   card.style.position = "absolute";
+  card.style.width = cardWidth + "px";
+  card.style.height = randomHeight + "px";
+  card.style.borderRadius = "10px";
   card.style.left = left + "px";
   card.style.top = top + "px";
-
   card.style.backgroundColor = rgba;
 
   container.appendChild(card);
+
+  // jaha pe kum height wala div hai vaha pe dusra div add karo
+  columnHeights[minIndex] += randomHeight + gap
+  
+  // aab container ki height adjust karo
+  container.style.height = Math.max(...columnHeights) + "px"
+
 });
