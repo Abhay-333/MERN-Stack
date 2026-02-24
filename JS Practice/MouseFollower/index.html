@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        background-color: black;
+        color: white;
+        position: relative;
+        /* display: flex;
+        align-items: center;
+        justify-content: center; */
+      }
+
+      .crs {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 2px solid gray;
+        position: absolute;
+        background-color: white;
+        /* transition: transform linear 0.008s; */
+        pointer-events: none;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="crs"></div>
+    <script>
+      const crs = document.querySelector(".crs");
+      const crsChild = document.querySelector(".crs-child");
+      const body = document.querySelector("body");
+      let x = 0,
+        y = 0;
+
+      body.addEventListener("mousemove", (e) => {
+        x = e.clientX;
+        y = e.clientY;
+        requestAnimationFrame(follow);
+      });
+
+      function follow() {
+        crs.style.transform = `translate(${x - 15}px, ${y - 15}px)`;
+        crs.style.opacity = 1;
+      }
+    </script>
+  </body>
+</html>
