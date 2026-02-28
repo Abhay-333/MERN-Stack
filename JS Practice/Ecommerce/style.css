@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+}
+
+nav{
+    /* height: 7%; */
+    background-color: rgb(45, 45, 45);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.mid-nav, .right-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.home-link, .product-link, .cart-link{
+    cursor: pointer;
+}
+
+.right-nav i{
+    cursor: pointer;
+}
+
+section{
+    display: flex;
+    /* flex-direction: column; */
+    padding: 40px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-card{
+    padding: 30px;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    background-color: rgb(37, 37, 37);
+    gap: 15px;
+    border-radius: 10px;
+}
+
+.img{
+    width: 250px;
+}
+
+.img > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.btns button{
+    color: white;
+    border: none;
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btns button:nth-child(2){
+    background-color: darkgreen;
+}
+
+.cartScreen{
+    background-color: rgba(10, 10, 10, 0.458);
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    position: absolute;
+    z-index: -1;
+    top: 7%; 
+    overflow-y: auto;
+    backdrop-filter: blur(15px);
+}
