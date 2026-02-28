@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+body > * {
+  width: 400px;
+  background: #2f2f48;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #4e9af1;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #3b82d6;
+}
+
+/* Bookmark list */
+ul {
+  list-style: none;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Individual bookmark */
+li {
+  background: #3a3a55;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Link styling */
+li a {
+  color: #4e9af1;
+  text-decoration: none;
+  font-size: 14px;
+  flex: 1;
+  word-break: break-word;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
+/* Delete button inside li */
+li button {
+  width: auto;
+  padding: 5px 8px;
+  margin-left: 10px;
+  /* background: #ff4d4d; */
+  font-size: 12px;
+}
+
+li button:hover {
+  background: #e60000;
+}
+
+/* Scrollbar styling */
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
