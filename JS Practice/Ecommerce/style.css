@@ -101,7 +101,6 @@ section{
     width: 100%;
     padding: 40px;
     position: absolute;
-    z-index: -1;
     top: 7%; 
     overflow-y: auto;
     backdrop-filter: blur(15px);

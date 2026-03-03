@@ -50,7 +50,7 @@ const allProduct = [
   },
 ];
 
-localStorage.setItem("products", JSON.stringify(allProduct))
+// localStorage.setItem("products", JSON.stringify(allProduct))
 
 let cartProducts = [];
 let cartScreen = document.querySelector(".cartScreen");

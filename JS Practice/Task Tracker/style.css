@@ -1,0 +1,355 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  position: relative;
+  background-color: black;
+  color: white;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+/* main > h1{
+  margin-top: 1rem;
+  margin-left: 1rem;
+} */
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.past,
+.present,
+.future {
+  padding: 2rem;
+  margin-top: 1rem;
+  height: 80%;
+  width: 30%;
+  overflow-y: auto;
+}
+
+.past::-webkit-scrollbar,
+.present::-webkit-scrollbar,
+.future::-webkit-scrollbar {
+  width: 30%;
+}
+
+.past {
+  border-radius: 10px;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  /* background-color: red; */
+}
+
+.present {
+  border-radius: 10px;
+  border: 1px solid white;
+  /* background-color: yellow; */
+}
+
+.future {
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  border-radius: 10px;
+  /* background-color: blue; */
+  /* border: 1px solid white; */
+}
+
+input[type="text"] {
+  background-color: #111; /* slightly lighter than pure black */
+  color: #fff; /* white text */
+  border: 1px solid #333; /* subtle border */
+  padding: 10px 14px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  width: 250px;
+  transition: 0.3s ease;
+}
+
+.date {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  width: 250px;
+  transition: 0.3s ease;
+}
+
+.date:focus {
+  border-color: #fff;
+  box-shadow: 0 0 5px #fff3;
+}
+
+/* Calendar icon (Chrome-based browsers) */
+.date::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* turns icon white */
+  cursor: pointer;
+}
+
+/* Optional hover effect */
+.date:hover {
+  border-color: #555;
+}
+
+input[type="text"]::placeholder {
+  color: #777; /* soft gray placeholder */
+}
+
+input[type="text"]:focus {
+  border-color: #fff; /* highlight on focus */
+  box-shadow: 0 0 5px #fff3; /* soft glow */
+}
+
+select {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 250px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  appearance: none; /* removes default arrow */
+}
+
+select:focus {
+  border-color: #fff;
+  box-shadow: 0 0 5px #fff3;
+}
+
+/* Custom dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Option styling (limited control) */
+select option {
+  background-color: #111;
+  color: #fff;
+}
+
+button {
+  background-color: #111; /* slightly above black */
+  color: #fff;
+  border: 1px solid #333;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #1a1a1a; /* subtle lift */
+  border-color: #555;
+}
+
+button:active {
+  transform: scale(0.97); /* tactile press feel */
+  background-color: #000;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px #fff3;
+}
+
+.task-card {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 14px;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.task-card:hover {
+  border-color: #555;
+  transform: translateY(-3px);
+}
+
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.task-desc {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* Status select inside task card */
+.task-status-select {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  appearance: none;
+  margin-top: 10px;
+  width: 150px;
+}
+
+/* Hover + focus */
+.task-status-select:hover {
+  border-color: #555;
+}
+
+.task-status-select:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 5px #fff3;
+}
+
+
+/* Dropdown options (limited styling control) */
+.task-status-select option {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Optional: custom arrow */ */
+.task-status-select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px;
+  padding-right: 28px;
+} 
+
+.task-status{
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+/* Completed */
+.completed {
+  background-color: rgb(2, 117, 25);
+}
+
+/* Incomplete */
+.pending {
+  background-color: #444;
+  color: #fff;
+}
+
+.parentOverlay{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  /* transform: translate(-50%,-50%); */
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+}
+
+.childOverlay{
+  position: absolute;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 80%;
+  width: 50%;
+  outline: 1px solid white;
+  background-color: rgb(37, 37, 37);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.childOverlay::-webkit-scrollbar{
+  display: none;
+}
+.overlay-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.childOverlay > div > span{
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.childOverlay > div > p{
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.childOverlay > select{
+  margin-top: 1rem;
+}
+
+.status{
+  width: 50%;
+}
+
+.filter-results{
+  margin-top: 1rem;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.empty-arr-error{
+  font-size: 2rem;
+}

@@ -27,34 +27,70 @@ document.addEventListener("DOMContentLoaded", async () => {
     bookMarks = JSON.parse(saved);
     renderBookMarks();
   }
+});
 
-  saveBtn.addEventListener("click", () => {
-    const title = titleInput.value.trim();
-    const url = urlInput.value.trim();
-    // console.log(title,url)
+const rerenderBookmarks = () => {
+  const saved = localStorage.getItem("bookMarks");
+  if (saved) {
+    bookMarks = JSON.parse(saved);
+    renderBookMarks();
+  }
+};
 
-    // if(!url.startsWith("http")){
-    //   alert("Url must start with http or https")
-    // }
-    bookMarks.push({ id: Date.now(), title, url });
-    localStorage.setItem("bookMarks", JSON.stringify(bookMarks));
-    titleInput.value = "";
-    urlInput.value = "";
-    console.log(bookMarks);
-  });
+saveBtn.addEventListener("click", () => {
+  const title = titleInput.value.trim();
+  const url = urlInput.value.trim();
+  // console.log(title,url)
+
+  if(!url.startsWith("http")){
+    alert("Url must start with http or https")
+  }
+
+  bookMarks.push({ id: Date.now(), title, url });
+  localStorage.setItem("bookMarks", JSON.stringify(bookMarks));
+  renderBookMarks();
+
+  titleInput.value = "";
+  urlInput.value = "";
+  console.log(bookMarks);
 });
 
 function renderBookMarks() {
   bookmarkList.innerHTML = "";
-  bookMarks.forEach(function (bookMark) {
+  bookMarks.forEach(function (bookMark, index) {
     const li = document.createElement("li");
-    li.innerHTML = `<a href=${bookMark.url} target="_blank">${bookMark.title}</a> <button onClick="deleteBookMark(${bookMark.id})">❌</button>`;
+    let button = document.createElement("button");
+    let a = document.createElement("a");
+    // a.setAttribute("href", bookMark.url);
+    
+    a.innerHTML = bookMark.title;
+    button.setAttribute("data-id", bookMark.id);
+    button.innerHTML = "❌";
+    a.appendChild(button);
+    li.appendChild(a);
+
+    button.addEventListener("click", (btn) => {
+      let id = btn.target.dataset.id;
+      bookMarks = bookMarks.filter((bookMark) => {
+        return bookMark.id != id;
+      });
+      localStorage.setItem("bookMarks", JSON.stringify(bookMarks));
+      rerenderBookmarks();
+      console.log(bookMarks);
+    });
+    //  li.innerHTML = `<a href=${bookMark.url} target="_blank">${bookMark.title}</a> <button data-id=${index}></button>`;
     bookmarkList.appendChild(li);
   });
 }
 
-function deleteBookMark(id) {
-  bookMarks = bookMarks.filter((bookMark) => bookMark.id !== id);
-  localStorage.setItem("bookMarks", JSON.stringify(bookMarks));
-  renderBookMarks();
-}
+// const deleteBookMark = document.querySelector(".deleteBookMark")
+
+//   deleteBookMark.addEventListener("click", function(elem){
+//   console.log(elem);
+// });
+
+// function deleteBookMark(id) {
+//   bookMarks = bookMarks.filter((bookMark) => bookMark.id !== id);
+//   localStorage.setItem("bookMarks", JSON.stringify(bookMarks));
+//   renderBookMarks();
+// }

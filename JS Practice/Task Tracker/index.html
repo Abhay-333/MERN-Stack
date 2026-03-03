@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Task Manager</h1>
+      <form>
+        <input type="text" required class="task" placeholder="Enter Task" />
+        <input type="text" required class="task-desc" placeholder="Enter Description" />
+        <input type="date" required class="date" />
+
+        <select id="time" required>
+          <option value="" disabled selected hidden>Select Time</option>
+          <option value="past">Past</option>
+          <option value="present">Present</option>
+          <option value="future">Future</option>
+        </select>
+
+         <select id="status" required>
+          <option value="" disabled  hidden selected>Please Select a Filter</option>
+          <option value="working">Working on it...</option>
+          <option value="completed">Completed</option>
+          <option value="incompleted">InComplete</option>
+          <option value="due">Due</option>
+          <option value="upcoming">UpComing</option>
+        </select>
+
+
+        <button type="submit">Add Task</button>
+
+        <button type="button" class="filter-btn">Filter Tasks</button>
+      </form>
+
+      <div class="container">
+        <section class="past">
+          <h2>Past</h2>
+          <br />
+        </section>
+
+        <section class="present">
+          <h2>Today</h2>
+          <br />
+        </section>
+        <section class="future">
+          <h2>UpComing</h2>
+          <br />
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
