@@ -26,13 +26,22 @@ const taskLists = customSelector(".taskList");
 const selectStatus = customSelector("#status");
 
 let allTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-console.log(allTasks);
 
 if (allTasks.length > 0) {
   renderTask();
 }
 
 function addTo() {
+  if (
+    !taskInp.value.trim() ||
+    !descInp.value.trim() ||
+    !dateInp.value ||
+    !selectTime.value ||
+    !selectStatus.value
+  ) {
+    alert("Please fill all fields");
+    return;
+  }
   allTasks.push({
     id: Date.now(),
     title: taskInp.value,
@@ -43,7 +52,6 @@ function addTo() {
   });
   updateLocalStorage();
   renderTask();
-  console.log(allTasks);
 }
 
 function updateLocalStorage() {
@@ -93,12 +101,12 @@ function filterTasks() {
   const filterTasks = allTasks.filter(
     (task, index) => filterStatus.value === task.status,
   );
-  if(filterTasks.length <= 0){
-    const h1 = document.createElement("h1")
-    h1.setAttribute("class", "empty-arr-error")
-    h1.textContent = "No Task found"
-    filterResults.appendChild(h1)
-    return
+  if (filterTasks.length <= 0) {
+    const h1 = document.createElement("h1");
+    h1.setAttribute("class", "empty-arr-error");
+    h1.textContent = "No Task found";
+    filterResults.appendChild(h1);
+    return;
   }
   filterTasks.forEach((elem, index) => {
     const taskElem = document.createElement("div");
@@ -121,7 +129,6 @@ function filterTasks() {
 
     filterResults.appendChild(taskElem);
   });
-  console.log(filterTasks);
 }
 
 function changeStatus(selectElement, id) {
@@ -131,33 +138,19 @@ function changeStatus(selectElement, id) {
 
   const taskStatus = selectElement.value;
   const taskStatusElem = selectElement.previousElementSibling;
-
   if (!found) return;
   found.status = selectElement.value;
 
   taskStatusElem.innerHTML =
-    taskStatus.charAt(0).toUpperCase() + taskStatus.slice(1);
+    `<span>Status: </span>` +
+    taskStatus.charAt(0).toUpperCase() +
+    taskStatus.slice(1);
 }
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
-  switch (selectTime.value) {
-    case "past": {
-      addTo("past");
-      break;
-    }
-    case "present": {
-      addTo("present");
-      break;
-    }
-    case "future": {
-      addTo("future");
-      break;
-    }
-    default:
-      alert("Please select a valid time");
-  }
+  addTo();
+  form.reset();
 });
 
 filterBtn.addEventListener("click", function () {
@@ -195,10 +188,9 @@ filterBtn.addEventListener("click", function () {
   });
 });
 
-function deleteTask(clickedTask, id){
-  const deletedTasks = allTasks.filter((task,index)=>task.id !== id)
-  allTasks = deletedTasks
-  updateLocalStorage()
-  renderTask()
-  console.log(deletedTasks)
+function deleteTask(clickedTask, id) {
+  const deletedTasks = allTasks.filter((task, index) => task.id !== id);
+  allTasks = deletedTasks;
+  updateLocalStorage();
+  renderTask();
 }
