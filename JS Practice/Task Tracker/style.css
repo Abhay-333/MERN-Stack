@@ -353,3 +353,16 @@ button:focus {
 .empty-arr-error{
   font-size: 2rem;
 }
+
+.task-card {
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 5%;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+}

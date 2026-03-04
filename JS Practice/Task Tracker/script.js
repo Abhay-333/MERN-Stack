@@ -58,6 +58,7 @@ function renderTask() {
     const taskElem = document.createElement("div");
     taskElem.innerHTML = `
           <div class="task-card">
+            <span class="delete-btn" onclick="deleteTask(this,${elem.id})">&times;</span>
             <h3 class="task-title">Title: ${elem.title}</h3>
             <p class="task-desc">Description: ${elem.desc}</p>
             <span class="task-status">Status: <span>${elem.status.charAt(0).toUpperCase() + elem.status.slice(1)}</span></span>
@@ -104,6 +105,7 @@ function filterTasks() {
 
     taskElem.innerHTML += `
           <div class="task-card">
+            <span class="delete-btn" onclick="deleteTask(this,${elem.id})">&times;</span>  
             <h3 class="task-title">Title: ${elem.title}</h3>
             <p class="task-desc">Description: ${elem.desc}</p>
             <span class="task-status">Status: <span>${elem.status.charAt(0).toUpperCase() + elem.status.slice(1)}</span></span>
@@ -192,3 +194,11 @@ filterBtn.addEventListener("click", function () {
     childOverlay.remove();
   });
 });
+
+function deleteTask(clickedTask, id){
+  const deletedTasks = allTasks.filter((task,index)=>task.id !== id)
+  allTasks = deletedTasks
+  updateLocalStorage()
+  renderTask()
+  console.log(deletedTasks)
+}
