@@ -1,3 +1,5 @@
 # Media/Audio files
 *.mp3
 *.mp4
+*node_modules
+*.env
