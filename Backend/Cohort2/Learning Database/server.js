@@ -1,17 +1,27 @@
 // server start krna and db connect krna
 
-require("dotenv").config();
 const app = require("./src/app.js");
-const mongoose = require("mongoose");
+const noteModel = require("./src/models/notes.model.js");
+const connectDB = require("./src/config/database.js");
+const express = require("express");
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("Connected to DB");
+app.use(express.json());
+
+connectDB();
+
+app.post("/notes", async (req, res) => {
+  const { title, description } = req.body;
+  const note = await noteModel.create({ title, description });
+  res.status(201).json({ message: "Note created Successfull", note });
+});
+
+app.get("/notes", async (req,res)=>{
+  const note = await noteModel.find()
+  res.status(200).json({
+    message: "Data Fetch Successfully",
+    note
   })
-  .catch((err) => {
-    console.log(err);
-  });
+})
 
 app.listen(3000, () => {
   console.log("Server Listening on 3000");
