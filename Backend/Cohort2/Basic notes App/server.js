@@ -1,7 +1,6 @@
-// yaha pe server start krte hai
+// yaha server start kerenge
+const app = require("./src/app.js")
 
-const app = require("./src/app")
-
-app.listen("3000",()=>{
-    console.log("server is listening on 3000")
+app.listen(3000, () => {
+   console.log("Server is listening on 3000")
 })
