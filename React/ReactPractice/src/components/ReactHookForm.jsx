@@ -1,22 +1,15 @@
-import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const Form = () => {
-  let inpRef = useRef({});
-  console.log(inpRef);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inpRef.current.name.value);
-    console.log(inpRef.current.email.value);
-    console.log(inpRef.current.password.value);
-    console.log(inpRef.current.phone.value);
-  };
+const ReactHookForm = () => {
+  const { register, handleSubmit,reset } = useForm();
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit((data)=>{
+            console.log(data)
+            reset()
+        })}
         className="bg-zinc-900 p-8 rounded-xl w-80 flex flex-col gap-4 shadow-lg"
       >
         <h2 className="text-white text-2xl font-semibold text-center">
@@ -24,35 +17,39 @@ const Form = () => {
         </h2>
 
         <input
+          {...register("name")}
           type="text"
           name="name"
           placeholder="Name"
-          ref={(e) => (inpRef.current.name = e)}
+          
           className="p-2 rounded bg-black border border-zinc-700 text-white focus:outline-none focus:border-green-500"
         />
 
         <input
+        {...register("email")}
           type="email"
           name="email"
           placeholder="Email"
-          ref={(e) => (inpRef.current.email = e)}
+          
           className="p-2 rounded bg-black border border-zinc-700 text-white focus:outline-none focus:border-green-500"
         />
 
         <input
+        {...register("password")}
           type="password"
           name="password"
           placeholder="Password"
-          ref={(e) => (inpRef.current.password = e)}
+          
           className="p-2 rounded bg-black border border-zinc-700 text-white focus:outline-none focus:border-green-500"
         />
 
         <input
+        {...register("phone")}
           type="tel"
           name="phone"
-          //   value={inpRef.current.phone.value}
+          //   value={inp
           placeholder="Phone Number"
-          ref={(e) => (inpRef.current.phone = e)}
+          
           className="p-2 rounded bg-black border border-zinc-700 text-white focus:outline-none focus:border-green-500"
         />
 
@@ -67,4 +64,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default ReactHookForm;

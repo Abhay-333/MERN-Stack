@@ -2,6 +2,7 @@ import { Activity, useState } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Form from "./components/Form";
+import ReactHookForm from "./components/ReactHookForm";
 
 function App() {
   // const [toggle, settoggle] = useState(false);
@@ -18,8 +19,12 @@ function App() {
       <Activity mode={!toggle ? "visible" : "hidden"}>
         <Contact settoggle={settoggle}></Contact>
       </Activity> */}
+      
+      {/* <Form></Form> */}
+      {/* yaha pe optimized techinque use ki hai for for handling, jo useState se honi wali re-rendering ho kafi kum kr deghi*/}
 
-      <Form></Form>
+      <ReactHookForm/>
+      
     </>
   );
 }
