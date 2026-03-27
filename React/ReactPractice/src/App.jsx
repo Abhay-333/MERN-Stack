@@ -3,6 +3,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Form from "./components/Form";
 import ReactHookForm from "./components/ReactHookForm";
+import WeatherApi from "./components/WeatherApi";
 
 function App() {
   // const [toggle, settoggle] = useState(false);
@@ -23,8 +24,9 @@ function App() {
       {/* <Form></Form> */}
       {/* yaha pe optimized techinque use ki hai for for handling, jo useState se honi wali re-rendering ho kafi kum kr deghi*/}
 
-      <ReactHookForm/>
+      {/* <ReactHookForm/> */}
       
+      <WeatherApi/>
     </>
   );
 }
