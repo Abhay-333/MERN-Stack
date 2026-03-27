@@ -22,6 +22,7 @@ const WeatherApi = () => {
         `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&hourly=temperature_2m`,
       );
       setWeather(result);
+      console.log(weather)
     } catch (err) {
       console.log(err);
     } finally {
