@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { Route, Routes } from "react-router";
+import { Outlet, Route, Routes } from "react-router";
 import Home from "../components/screens/Home";
 import Cart from "../components/screens/Cart";
+import Login from "../Auth/Login";
+import Register from "../Auth/Register";
+import Auth from "../Auth/Auth";
 
 const AppRoutes = () => {
   return (
@@ -11,7 +14,12 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
-        {/* <Route path="/" element={<Home />}></Route> */}
+
+        <Route path="/auth" element={<Auth/>}>
+          <Route index path="" element={<Login />}></Route>
+          <Route path="/auth/register" element={<Register />}></Route>
+        </Route>
+
       </Routes>
     </>
   );
