@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: SkyMartfont1;
+  src: url(./assets/SkyMart\ Font1.woff2);
+}
+
+@font-face {
+  font-family: SkyMartfont2;
+  src: url(./assets/SkyMart\ Font2.woff2);
+}
+
+*{
+  font-family: SkyMartfont2;
+}
+body {
+  height: 100%;
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
