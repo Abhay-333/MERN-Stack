@@ -1,37 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { Mail, Lock, User, ArrowRight } from "lucide-react";
+import React, { useState, useEffect, useContext } from "react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const navigate = useNavigate();
   const [passwordState, setPasswordState] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { registerUsers, setRegisterUsers } = useContext(AuthContext);
 
   const {
     register,
     watch,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  // 1. App crash fix: added || ""
   const currentPass = watch("password") || "";
 
   // Password strength logic
   useEffect(() => {
     if (currentPass.length >= 10) {
-        setPasswordState("Strong");
+      setPasswordState("Strong");
     } else if (currentPass.length >= 6) {
-        setPasswordState("Medium");
+      setPasswordState("Medium");
     } else if (currentPass.length > 0) {
-        setPasswordState("Weak");
+      setPasswordState("Weak");
     } else {
       setPasswordState("");
     }
   }, [currentPass]);
 
-  const onSubmit = (data) => {
-    console.log("Form Submitted:", data);
+  const handleFormSubmit = (data) => {
+    const alreadyExist = registerUsers.some(
+      (user) => user.fullName === data.fullName || user.email === data.email,
+    );
+    console.log(registerUsers)
+    if (!alreadyExist) {
+      const newUsers = [...registerUsers, data];
+      setRegisterUsers(newUsers);
+      localStorage.setItem("reg_users:", JSON.stringify(newUsers));
+      toast.success("User Registerd Successfully");
+      reset();
+    } else {
+      toast.error("User Already Exists");
+    }
+    // console.log("Form Submitted:", newUsers);
   };
 
   return (
@@ -41,7 +59,7 @@ export default function Register() {
         Join us and start shopping today
       </p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
         {/* Name Input */}
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -74,11 +92,39 @@ export default function Register() {
             <Lock size={18} className="text-neutral-500" />
           </div>
           <input
-            {...register("password", { required: "Password is required." })}
-            type="password"
+            {...register("password", {
+              required: "Password is required.",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters long.",
+              },
+            })}
+            type={showPassword ? "text" : "password"}
             placeholder="Create Password"
-            className="w-full bg-[#1a1a1a] border border-neutral-800 text-white text-sm rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-[#ccff00] transition-colors placeholder:text-neutral-600"
+            className="w-full bg-[#1a1a1a] border border-neutral-800 text-white text-sm rounded-xl py-3.5 pl-11 pr-11 focus:outline-none focus:border-[#ccff00] transition-colors placeholder:text-neutral-600"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute inset-y-0 right-0 pr-4 flex items-center"
+          >
+            {showPassword ? (
+              <EyeOff
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            ) : (
+              <Eye
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            )}
+          </button>
+          {errors.password && (
+            <p className="text-red-500 text-xs mt-1 px-1">
+              {errors.password.message}
+            </p>
+          )}
         </div>
 
         {/* Password Strength Indicator */}
@@ -122,10 +168,27 @@ export default function Register() {
               validate: (val) =>
                 watch("password") === val || "Passwords do not match",
             })}
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm Password"
-            className="w-full bg-[#1a1a1a] border border-neutral-800 text-white text-sm rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-[#ccff00] transition-colors placeholder:text-neutral-600"
+            className="w-full bg-[#1a1a1a] border border-neutral-800 text-white text-sm rounded-xl py-3.5 pl-11 pr-11 focus:outline-none focus:border-[#ccff00] transition-colors placeholder:text-neutral-600"
           />
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
+            className="absolute inset-y-0 right-0 pr-4 flex items-center"
+          >
+            {showConfirmPassword ? (
+              <EyeOff
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            ) : (
+              <Eye
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            )}
+          </button>
           {errors.confirmPassword && (
             <p className="text-red-500 text-xs mt-1 px-1">
               {errors.confirmPassword.message}
@@ -146,7 +209,7 @@ export default function Register() {
       <p className="text-center text-neutral-500 text-sm mt-8">
         Already have an account?{" "}
         <button
-          onClick={() => navigate("/auth")}
+          onClick={() => navigate("/")}
           className="cursor-pointer text-[#ccff00] font-medium hover:underline"
         >
           Sign in

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,15 +13,15 @@ const Login = () => {
     reset,
   } = useForm();
 
-  const { loggedUser, setLoggedUser, registerUsers } = useContext(AuthContext);
+  const { loggedUser, setLoggedInUser, registerUsers } = useContext(AuthContext);
 
   const handleFormSubmit = (data) => {
     const isExist = registerUsers.find((user) => user.email === data.email);
     console.log(isExist);
 
     if (isExist) {
-      setLoggedUser(isExist);
-      localStorage.setItem("logged user: ", JSON.stringify(isExist));
+      setLoggedInUser(isExist);
+      localStorage.setItem("loggedUser", JSON.stringify(isExist));
       toast.success("User Logged In Successfully");
     } else {
       toast.error("User does not exist");
@@ -102,7 +103,7 @@ const Login = () => {
         <p className="text-sm text-center mt-4 text-gray-400">
           Create a account?{" "}
           <span
-            onClick={() => navigate("register")}
+            onClick={() => navigate("/register")}
             className="text-blue-400 cursor-pointer hover:underline"
           >
             Register

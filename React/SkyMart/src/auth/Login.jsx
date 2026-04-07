@@ -1,10 +1,12 @@
-import React from "react";
-import { Mail, Lock, Eye, ArrowRight } from "lucide-react";
+import React, { useContext, useState } from "react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -12,11 +14,16 @@ export default function Login() {
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
-  const handleFormSubmit = (data) => {
-    console.log(data);
-    reset()
-  };
+  const { login } = useContext(AuthContext);
 
+  const handleFormSubmit = (data) => {
+    const isLoggedIn = login(data);
+    
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  };
+  
   return (
     <div className="bg-[#121212] border border-neutral-800 rounded-3xl p-8 lg:p-10 shadow-2xl">
       <h2 className="text-3xl font-bold text-white mb-2">Sign in</h2>
@@ -48,27 +55,46 @@ export default function Login() {
             <Lock size={18} className="text-neutral-500" />
           </div>
           <input
-            {...register("password", { required: "Password is required" })}
-            type="password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters long.",
+              },
+            })}
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             className="w-full bg-[#1a1a1a] border border-neutral-800 text-white text-sm rounded-xl py-3.5 pl-11 pr-11 focus:outline-none focus:border-[#ccff00] transition-colors placeholder:text-neutral-600"
           />
           <button
             type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
             className="absolute inset-y-0 right-0 pr-4 flex items-center"
           >
-            <Eye
-              size={18}
-              className="text-neutral-500 hover:text-white transition-colors"
-            />
+            {showPassword ? (
+              <EyeOff
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            ) : (
+              <Eye
+                size={18}
+                className="text-neutral-500 hover:text-white transition-colors"
+              />
+            )}
           </button>
+          {errors.password && (
+            <p className="text-red-400 text-sm mt-1">
+              {errors.password.message}
+            </p>
+          )}
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={!isValid}
-          className={`w-full ${!isValid ? "cursor-not-allowed" : ""} bg-[#ccff00] hover:bg-[#b3e600] text-black font-semibold rounded-xl py-3.5 mt-2 flex items-center justify-center gap-2 transition-colors`}
+          className={`w-full ${!isValid ? "cursor-not-allowed" : "cursor-pointer"} bg-[#ccff00] hover:bg-[#b3e600] text-black font-semibold rounded-xl py-3.5 mt-2 flex items-center justify-center gap-2 transition-colors`}
         >
           Sign in <ArrowRight size={18} />
         </button>

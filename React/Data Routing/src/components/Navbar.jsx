@@ -1,14 +1,17 @@
 import { NavLink, useNavigate, useParams } from "react-router";
 import About from "../pages/About";
 import Home from "../pages/Home";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   // const navigate = useNavigate();
+  const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const [toggle, setToggle] = useState("register");
-
+  console.log(loggedInUser);
   return (
     <nav className="flex items-center justify-between px-10 py-4 bg-gray-900 shadow-lg">
       {/* Logo */}
@@ -24,7 +27,7 @@ const Navbar = () => {
           Home
         </NavLink>
         <NavLink
-          to={"/about"}
+          to={"/dashboard/about"}
           element={<About />}
           className="cursor-pointer hover:text-red-500 transition"
         >
@@ -35,17 +38,25 @@ const Navbar = () => {
       {/* Buttons */}
       <div className="flex gap-4">
         <NavLink
-          to={`/auth/${toggle}`}
+          to={`/${toggle}`}
           element={toggle === "register" ? <Login /> : <Register />}
-          onClick={() => setToggle((prev) => {
-            return prev === "" ? "register" : ""
-          })}
+          onClick={() =>
+            setToggle((prev) => {
+              return prev === "" ? "register" : "";
+            })
+          }
           className="px-4 py-2 cursor-pointer border border-blue-500 text-white rounded-lg hover:bg-blue-500 hover:text-white transition"
         >
           {toggle === "register" ? "Sign In" : "LogIn"}
         </NavLink>
-        <button className="px-4 py-2 cursor-pointer bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-          Add to Cart
+        <button
+          onClick={() => {
+            setLoggedInUser(null);
+            toast.info("User Logged out");
+          }}
+          className="px-4 py-2 cursor-pointer bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        >
+          Log Out
         </button>
       </div>
     </nav>

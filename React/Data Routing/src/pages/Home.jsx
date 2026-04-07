@@ -1,11 +1,14 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import { Outlet } from "react-router";
+import { ProductApi } from "../api/ProductApi";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
+  const products = useLoaderData()
+  console.log(products)
   return (
     <div>
       Home
+      
     </div>
   );
 };

@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "price": 99.99,
+    "description": "High-quality wireless headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
+    "rating": {
+      "rate": 4.5,
+      "count": 120
+    },
+    "features": [
+      "Noise Cancellation",
+      "30h Battery",
+      "Wireless",
+      "Comfortable Fit"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Smart Watch Series 5",
+    "price": 299.99,
+    "description": "Advanced smartwatch with health monitoring, GPS, and water resistance.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",
+    "rating": {
+      "rate": 4.2,
+      "count": 85
+    },
+    "features": [
+      "Health Monitoring",
+      "GPS",
+      "Water Resistant",
+      "Heart Rate Sensor"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Comfortable Cotton T-Shirt",
+    "price": 24.99,
+    "description": "Soft cotton t-shirt for daily wear.",
+    "category": "clothing",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400",
+    "rating": {
+      "rate": 4,
+      "count": 200
+    },
+    "features": [
+      "100% Cotton",
+      "Breathable",
+      "Multiple Colors",
+      "Machine Washable"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Ergonomic Office Chair",
+    "price": 199.99,
+    "description": "Comfortable chair with lumbar support.",
+    "category": "furniture",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400",
+    "rating": {
+      "rate": 4.7,
+      "count": 65
+    },
+    "features": [
+      "Lumbar Support",
+      "Adjustable Height",
+      "Breathable Mesh",
+      "360 Swivel"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Stainless Steel Water Bottle",
+    "price": 34.99,
+    "description": "Keeps drinks hot/cold for long time.",
+    "category": "home",
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400",
+    "rating": {
+      "rate": 4.3,
+      "count": 150
+    },
+    "features": [
+      "24h Cold",
+      "12h Hot",
+      "BPA Free",
+      "Insulated"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Professional Camera Lens",
+    "price": 599.99,
+    "description": "85mm lens for pro photography.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400",
+    "rating": {
+      "rate": 4.8,
+      "count": 45
+    },
+    "features": [
+      "f/1.4 Aperture",
+      "85mm Focal Length",
+      "Weather Sealed",
+      "Image Stabilization"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Running Shoes",
+    "price": 129.99,
+    "description": "Lightweight running shoes.",
+    "category": "clothing",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+    "rating": {
+      "rate": 4.4,
+      "count": 180
+    },
+    "features": [
+      "Cushioned Sole",
+      "Breathable Mesh",
+      "Lightweight",
+      "Arch Support"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Modern Coffee Table",
+    "price": 149.99,
+    "description": "Minimalist coffee table.",
+    "category": "furniture",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400",
+    "rating": {
+      "rate": 4.1,
+      "count": 90
+    },
+    "features": [
+      "Storage Compartment",
+      "Sustainable Materials",
+      "Minimalist Design",
+      "Easy Assembly"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Aromatherapy Essential Oil Diffuser",
+    "price": 49.99,
+    "description": "Relaxing diffuser with lights.",
+    "category": "home",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+    "rating": {
+      "rate": 4.6,
+      "count": 110
+    },
+    "features": [
+      "LED Lights",
+      "Timer Function",
+      "Ultrasonic",
+      "7 Color Modes"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Wireless Gaming Mouse",
+    "price": 79.99,
+    "description": "High precision gaming mouse.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",
+    "rating": {
+      "rate": 4.5,
+      "count": 95
+    },
+    "features": [
+      "1000Hz Polling",
+      "RGB Lighting",
+      "Programmable Buttons",
+      "Wireless"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Yoga Mat",
+    "price": 39.99,
+    "description": "Non-slip yoga mat.",
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+    "rating": {
+      "rate": 4.2,
+      "count": 130
+    },
+    "features": [
+      "Non-Slip Surface",
+      "6mm Thickness",
+      "Eco-Friendly",
+      "Carrying Strap"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Leather Wallet",
+    "price": 29.99,
+    "description": "Slim leather wallet.",
+    "category": "accessories",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",
+    "rating": {
+      "rate": 4,
+      "count": 75
+    },
+    "features": [
+      "RFID Protection",
+      "Genuine Leather",
+      "Multiple Slots",
+      "Slim Design"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "4K Ultra HD Monitor",
+    "price": 349.99,
+    "description": "27 inch UHD monitor.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400",
+    "rating": {
+      "rate": 4.7,
+      "count": 88
+    },
+    "features": [
+      "4K UHD",
+      "144Hz",
+      "HDR Support",
+      "27-inch Display"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Mechanical Keyboard",
+    "price": 149.99,
+    "description": "RGB keyboard.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400",
+    "rating": {
+      "rate": 4.6,
+      "count": 142
+    },
+    "features": [
+      "Mechanical Switches",
+      "RGB Backlit",
+      "Aluminum Frame",
+      "Anti-Ghosting"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Portable Power Bank",
+    "price": 49.99,
+    "description": "20000mAh power bank.",
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1609598228276-60d6e6b6b6b6?w=400",
+    "rating": {
+      "rate": 4.3,
+      "count": 203
+    },
+    "features": [
+      "20000mAh",
+      "Fast Charging",
+      "3 USB Ports",
+      "LED Indicator"
+    ]
+  }
+]

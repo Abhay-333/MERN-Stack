@@ -1,27 +1,42 @@
-import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router";
 import About from "../pages/About";
-import App from "../App";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../auth/AuthLayout";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
+import ProtectedDashboard from "./ProtectedDashboard";
+import ProtectedAuth from "./ProtectedAuth";
+import { ProductApi } from "../api/ProductApi";
 
 const AppRoutes = () => {
   let router = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout></MainLayout>,
+      element: <ProtectedAuth></ProtectedAuth>,
       children: [
-        { path: "", element: <Home></Home> },
-        { path: "/about", element: <About></About> },
+        { path: "", element: <Login></Login> },
+        { path: "register", element: <Register></Register> },
+      ],
+    },
+
+    {
+      path: "/dashboard",
+      element: <ProtectedDashboard></ProtectedDashboard>,
+      children: [
         {
-          path: "/auth",
-          element: <AuthLayout />,
+          path: "",
+          element: <MainLayout></MainLayout>,
           children: [
-            { path: "", element: <Login></Login> },
-            { path: "register", element: <Register></Register> },
+            {
+              path: "",
+              loader: async () => {
+                return ProductApi();
+              },
+              hydrateFallbackElement: <h1>Loading Products...</h1>,
+              element: <Home></Home>,
+            },
+            { path: "about", element: <About></About> },
           ],
         },
       ],

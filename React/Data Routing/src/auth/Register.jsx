@@ -26,7 +26,7 @@ const Register = () => {
     if (!isExist) {
       const newUser = [...registerUsers, data];
       setRegisterUsers(newUser);
-      localStorage.setItem("register users: ", JSON.stringify(newUser));
+      localStorage.setItem("registerUsers", JSON.stringify(newUser));
       toast.success("User Successfully Registered");
     } else {
       toast.error("User Already Exist");
@@ -110,7 +110,7 @@ const Register = () => {
         <p className="text-sm text-center mt-4 text-gray-400">
           Already have an account?{" "}
           <span
-            onClick={() => navigate("/auth")}
+            onClick={() => navigate("/")}
             className="text-blue-400 cursor-pointer hover:underline"
           >
             Login
