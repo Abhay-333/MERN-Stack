@@ -2,12 +2,12 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import About from "../pages/About";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
-import AuthLayout from "../auth/AuthLayout";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
 import ProtectedDashboard from "./ProtectedDashboard";
 import ProtectedAuth from "./ProtectedAuth";
 import { ProductApi } from "../api/ProductApi";
+import ProductDetails from "../pages/ProductDetails";
 
 const AppRoutes = () => {
   let router = createBrowserRouter([
@@ -37,6 +37,12 @@ const AppRoutes = () => {
               element: <Home></Home>,
             },
             { path: "about", element: <About></About> },
+            
+            {
+              path: "product/details/:id",
+              element: <ProductDetails></ProductDetails>,
+            },
+
           ],
         },
       ],
