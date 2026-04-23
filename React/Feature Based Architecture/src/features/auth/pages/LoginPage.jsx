@@ -3,8 +3,7 @@ import LeftHero from "../components/LeftHero";
 import RoleToggle from "../components/RoleToggle";
 import RegisterPage from "./RegisterPage";
 import Input from "../../../shared/components/Input";
-import { useForm } from "react-hook-form";
-import useAuth from "../../../shared/hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 export default function LoginPage({
   toggleAuth,
@@ -12,18 +11,12 @@ export default function LoginPage({
   role,
   setRole,
 }) {
-  const { register, handleSubmit } = useForm();
-  const { registerUsers, setRegisterUsers } = useAuth();
-  console.log(registerUsers);
-  
-  const handleFormSubmit = (data) => {
-    console.log(data);
-  };
+  const {register, handleSubmit, handleLoginFormSubmit} = useAuth();
 
   return toggleAuth === "login" ? (
     <div className="flex items-center justify-center p-6 sm:p-10 lg:p-14">
       <form
-        onSubmit={handleSubmit(handleFormSubmit)}
+        onSubmit={handleSubmit(handleLoginFormSubmit)}
         className="w-full max-w-[420px]"
       >
         <h1 className="text-3xl sm:text-[44px] font-semibold tracking-[-0.04em] text-slate-900">

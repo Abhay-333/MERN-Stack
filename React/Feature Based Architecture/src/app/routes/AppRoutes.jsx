@@ -14,9 +14,11 @@ const AppRoutes = () => {
           path: "",
           element: <LoginPage />,
         },
-
       ],
     },
+    // {
+    //   path:"/dashboard", element:<Dashboard></Dashboard>
+    // }
   ]);
   return <RouterProvider router={router} />;
 };
