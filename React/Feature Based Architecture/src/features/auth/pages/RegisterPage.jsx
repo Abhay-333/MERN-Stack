@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../../shared/components/Input";
+import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = ({ role, setRole, toggleAuth, setToggleAuth }) => {
 

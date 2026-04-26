@@ -9,10 +9,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     let regData = storage.get("registerUsers");
-    setRegisterUsers(regData);
+    console.log(regData);
+    setRegisterUsers(() => (regData ? regData : []));
 
     let logData = storage.get("loggedInUser");
-    setLoggedInUser(logData);
+    setLoggedInUser(logData || null);
   }, []);
 
   return (

@@ -3,22 +3,49 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import AuthLayout from "../layouts/AuthLayout";
 import LoginPage from "../../features/auth/pages/LoginPage";
 import RegisterPage from "../../features/auth/pages/RegisterPage";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../../features/dashboard/pages/Dashboard";
+import PublicRoutes from "./PublicRoutes";
+import ProtectedRoutes from "./ProtectedRoutes";
+import Employees from "../../features/employees/pages/Employees";
+import Payroll from "../../features/payroll/pages/Payroll";
+import Settings from "../../features/settings/pages/Settings";
 
 const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AuthLayout></AuthLayout>,
+      element: <PublicRoutes></PublicRoutes>,
       children: [
         {
           path: "",
-          element: <LoginPage />,
+          element: <AuthLayout></AuthLayout>,
+          children: [
+            {
+              path: "",
+              element: <LoginPage />,
+            },
+          ],
         },
       ],
     },
-    // {
-    //   path:"/dashboard", element:<Dashboard></Dashboard>
-    // }
+
+    {
+      path: "/dashboard",
+      element: <ProtectedRoutes></ProtectedRoutes>,
+      children: [
+        {
+          path: "",
+          element: <DashboardLayout></DashboardLayout>,
+          children: [
+            { path: "", element: <Dashboard></Dashboard> },
+            { path: "employees", element: <Employees></Employees> },
+            { path: "payroll", element: <Payroll></Payroll> },
+            { path: "settings", element: <Settings></Settings> },
+          ],
+        },
+      ],
+    },
   ]);
   return <RouterProvider router={router} />;
 };
