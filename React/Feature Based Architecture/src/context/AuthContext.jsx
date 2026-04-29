@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     let regData = storage.get("registerUsers");
-    console.log(regData);
     setRegisterUsers(() => (regData ? regData : []));
 
     let logData = storage.get("loggedInUser");

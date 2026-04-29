@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 const navItems = [
   { label: "Dashboard", icon: "▣", active: true },
   { label: "Employees", icon: "◫", active: false },
+  { label: "Registration", icon: "◫", active: false },
   { label: "Payroll", icon: "⌂", active: false },
   { label: "Settings", icon: "⚙", active: false },
 ];

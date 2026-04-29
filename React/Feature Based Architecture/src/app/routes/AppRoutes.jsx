@@ -10,6 +10,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Employees from "../../features/employees/pages/Employees";
 import Payroll from "../../features/payroll/pages/Payroll";
 import Settings from "../../features/settings/pages/Settings";
+import Registration from "../../features/registration/pages/Registration";
 
 const AppRoutes = () => {
   const router = createBrowserRouter([
@@ -40,6 +41,7 @@ const AppRoutes = () => {
           children: [
             { path: "", element: <Dashboard></Dashboard> },
             { path: "employees", element: <Employees></Employees> },
+            { path: "registration", element: <Registration></Registration> },
             { path: "payroll", element: <Payroll></Payroll> },
             { path: "settings", element: <Settings></Settings> },
           ],
