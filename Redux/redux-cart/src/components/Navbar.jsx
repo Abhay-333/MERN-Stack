@@ -11,15 +11,20 @@ const Navbar = () => {
 
       {/* MIDDLE SECTION */}
       <div className="hidden md:flex items-center gap-6">
-        <NavLink to={"/"} href="#" className="hover:text-gray-300">
+        <NavLink to={"/"} className="hover:text-gray-300">
           Home
         </NavLink>
-        <NavLink to={"/About"} href="#" className="hover:text-gray-300">
+        <NavLink to={"/About"} className="hover:text-gray-300">
           About
         </NavLink>
-        <NavLink to={"/shop"} href="#" className="hover:text-gray-300">
+        <NavLink to={"/shop"} className="hover:text-gray-300">
           Shop
         </NavLink>
+
+        <NavLink to={"/cart"} className="hover:text-gray-300">
+          Cart
+        </NavLink>
+
       </div>
 
       {/* RIGHT SECTION */}

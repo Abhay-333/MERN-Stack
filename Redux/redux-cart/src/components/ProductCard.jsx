@@ -1,9 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cartSlices";
+import { useLocation } from "react-router";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
   return (
-    <div className="bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition duration-300 flex flex-col">
-      
+    <div className="bg-white w-70 text-black rounded-2xl shadow-md p-4 hover:shadow-xl transition duration-300 flex flex-col">
       {/* IMAGE */}
       <div className="h-48 flex items-center justify-center">
         <img
@@ -15,11 +19,8 @@ const ProductCard = ({ product }) => {
 
       {/* CONTENT */}
       <div className="mt-4 flex flex-col flex-grow">
-        
         {/* TITLE */}
-        <h2 className="text-sm font-semibold line-clamp-2">
-          {product.title}
-        </h2>
+        <h2 className="text-sm font-semibold line-clamp-2">{product.title}</h2>
 
         {/* CATEGORY */}
         <p className="text-xs text-gray-500 mt-1 capitalize">
@@ -40,9 +41,46 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* BUTTON */}
-        <button className="mt-auto bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-          Add to Cart
-        </button>
+        {pathname === "/cart" ? (
+          <div className="">
+            <button
+              // onClick={() => dispatch(addItem(product))}
+              className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            >
+              -
+            </button>
+            {product.quantity}
+            <button
+              // onClick={() => dispatch(addItem(product))}
+              className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            >
+              +
+            </button>
+          </div>
+        ) : product.quantity >= 1 ? (
+          <div className="">
+            <button
+              // onClick={() => dispatch(addItem(product))}
+              className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            >
+              -
+            </button>
+            {product.quantity}
+            <button
+              // onClick={() => dispatch(addItem(product))}
+              className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => dispatch(addItem(product))}
+            className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+          >
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );
