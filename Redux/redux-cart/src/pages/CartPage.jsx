@@ -4,7 +4,7 @@ import { store } from "../app/store";
 import ProductCard from "../components/ProductCard";
 
 const CartPage = () => {
-  const { cartItems } = useSelector((store) => store.cart); //store se data lane ke liye
+  const { cartItems } = useSelector((store) => store.cart);   //store se data lane ke liye
   console.log(cartItems);
 
   return (

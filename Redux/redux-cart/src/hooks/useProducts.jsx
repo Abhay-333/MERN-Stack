@@ -16,4 +16,4 @@ const useProducts = () => {
   return { products, setProducts };
 };
 
-export default useProducts
+export default useProducts;
