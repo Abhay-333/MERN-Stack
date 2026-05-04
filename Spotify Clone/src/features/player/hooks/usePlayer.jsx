@@ -1,17 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../../../app/store/store";
 import { useEffect, useRef } from "react";
 import { pause, play } from "../state/playerSlice";
 
 export const usePlayer = () => {
-  let { currentPlayingSong, isPlaying } = useSelector((store) => store.player);
+  const { currentPlayingSong, isPlaying } = useSelector((store) => store.player);
   const audioRef = useRef(new Audio());
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!currentPlayingSong) return;
     audioRef.current.src = currentPlayingSong.url;
-    isPlaying = true
   }, [currentPlayingSong]);
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export const usePlayer = () => {
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [currentPlayingSong, isPlaying]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -32,6 +31,8 @@ export const usePlayer = () => {
     }
   };
   return {
+    currentPlayingSong,
+    isPlaying,
     togglePlay,
   };
 };

@@ -3,6 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { FiDownload, FiBell } from "react-icons/fi";
 import { HiUsers } from "react-icons/hi";
+import SearchBar from "../../../search/ui/SearchBar";
 
 const Navbar = () => {
   return (
@@ -17,14 +18,13 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex items-center bg-neutral-800 px-4 py-2 rounded-full w-[400px]">
-          <IoSearch className="text-gray-400 text-lg mr-2" />
-          <input
-            type="text"
-            placeholder="What do you want to play?"
-            className="bg-transparent outline-none text-white w-full placeholder-gray-400"
-          />
-        </div>
+        <SearchBar
+          type={"text"}
+          placeholder={"What do you want to play?"}
+          className={
+            "bg-transparent outline-none text-white w-full placeholder-gray-400"
+          }
+        ></SearchBar>
       </div>
 
       {/* Right Section */}

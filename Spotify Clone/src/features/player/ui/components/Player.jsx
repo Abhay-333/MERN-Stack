@@ -10,8 +10,8 @@ import {
 import { FiVolume2 } from "react-icons/fi";
 import { usePlayer } from "../../hooks/usePlayer";
 
-const Player = ({ onPlayPause }) => {
-  const { currentPlayingSong, isPlaying } = usePlayer();
+const Player = () => {
+  const { currentPlayingSong, isPlaying, togglePlay } = usePlayer();
   return (
     <div className="w-full bg-black text-white px-4 py-3 flex items-center justify-between">
       {/* LEFT - Song Info */}
@@ -35,7 +35,7 @@ const Player = ({ onPlayPause }) => {
           <FaStepBackward className="cursor-pointer" />
 
           <button
-            onClick={onPlayPause}
+            onClick={togglePlay}
             className="bg-white text-black p-3 rounded-full"
           >
             {isPlaying ? <FaPause /> : <FaPlay />}

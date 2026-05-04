@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { allSongs } from "../../../../utils/songs";
 import SongCard from "../../ui/components/SongCard";
-import { isAction, nanoid } from "@reduxjs/toolkit";
+import { isAction } from "@reduxjs/toolkit";
 import { pause, play, playNewSong } from "../../../player/state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../../app/store/store";
@@ -14,8 +14,8 @@ const Home = () => {
   );
 
   const handlePlayAndPause = (song, isActive) => {
-    if (isPlaying) {
-      if (isActive) {
+    if (isActive) {
+      if (isPlaying) {
         dispatch(pause());
       } else {
         dispatch(play());
@@ -23,7 +23,6 @@ const Home = () => {
     } else {
       dispatch(playNewSong(song));
     }
-    console.log(song, isActive);
   };
 
   return (
@@ -36,7 +35,7 @@ const Home = () => {
             song={song}
             isActive={isActive}
             isPlaying={isPlaying}
-            key={nanoid()}
+            key={song.url}
             onPlayPause={() => handlePlayAndPause(song, isActive)}
           />
         );
