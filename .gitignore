@@ -1,5 +1,76 @@
-# Media/Audio files
-*.mp3
-*.mp4
-*node_modules
+# 🔒 Environment variables (VERY IMPORTANT)
+.env
+.env.*
 *.env
+
+# 🔐 Secrets / keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_dsa
+
+# 📦 Dependency folders
+node_modules/
+vendor/
+venv/
+__pycache__/
+
+# 🏗 Build / production files
+dist/
+build/
+out/
+target/
+
+# 🧪 Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 🖥 OS files
+.DS_Store
+Thumbs.db
+
+# 🧑‍💻 IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 🔄 Cache files
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# 📁 Temporary files
+tmp/
+temp/
+*.tmp
+
+# 🗃 Database files (local)
+*.sqlite
+*.db
+
+# 📸 Media uploads (optional - if user generated)
+uploads/
+public/uploads/
+
+# 📄 Backup files
+*.bak
+*.backup
+
+# 🧪 Test coverage
+coverage/
+
+# 🐳 Docker (optional sensitive configs)
+.dockerignore
+docker-compose.override.yml
+
+# 🔐 Firebase / AWS configs
+firebase-debug.log
+.aws/
