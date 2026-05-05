@@ -1,5 +1,5 @@
 {
-  "name": "spotify-clone",
+  "name": "infinite-query",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,17 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/react-query": "^5.100.9",
     "axios": "^1.16.0",
-    "nanoid": "^5.1.11",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-hook-form": "^7.75.0",
-    "react-icons": "^5.6.0",
-    "react-redux": "^9.2.0",
-    "react-resizable-panels": "^4.10.0",
-    "react-router": "^7.14.2",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {

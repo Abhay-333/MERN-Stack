@@ -5,26 +5,12 @@ import { isAction } from "@reduxjs/toolkit";
 import { pause, play, playNewSong } from "../../../player/state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../../app/store/store";
+import { useDashboard } from "../../hooks/useDashboard";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const { currentPlayingSong, isPlaying } = useSelector(
-    (store) => store.player,
-  );
-
-  const handlePlayAndPause = (song, isActive) => {
-    if (isActive) {
-      if (isPlaying) {
-        dispatch(pause());
-      } else {
-        dispatch(play());
-      }
-    } else {
-      dispatch(playNewSong(song));
-    }
-  };
-
+  const { data, dispatch, currentPlayingSong, isPlaying, handlePlayAndPause } =
+    useDashboard();
+    console.log(data)
   return (
     <div className="flex flex-wrap items-center justify-center gap-2">
       {allSongs.map((song) => {
