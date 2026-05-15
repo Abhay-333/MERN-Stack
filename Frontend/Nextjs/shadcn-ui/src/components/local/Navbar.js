@@ -24,13 +24,13 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href={"/contact"}
+            href={"/products"}
             className="cursor-pointer hover:text-gray-400 transition"
           >
-            Contact
+            Products
           </Link>
 
-          <ThemeToggle/>
+          <ThemeToggle />
         </ul>
       </div>
     </nav>
