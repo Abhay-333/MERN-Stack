@@ -1,25 +1,22 @@
 const express = require("express");
 const ProductModel = require("./models/product.model");
-
+const cors = require("cors");
 const app = express();
+
+app.use(cors({ origin: "http://localhost:5173" }));   // middleware for cors policy
 app.use(express.json());
 
 app.post("/create-product", async (req, res) => {
   try {
-    const {
-      name,
-      description,
-      category,
-      price: { amount, currency },
-      stock,
-    } = req.body;
+    const { productName, description, category, price, stock } = req.body;
+    const { amount, currency } = price || {};
 
-    if (!name || !amount || !stock) {
+    if (!productName || amount == null || stock == null) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
     const newProduct = await ProductModel.create({
-      productName: name,
+      productName,
       description,
       category,
       price: { amount, currency },
@@ -28,7 +25,7 @@ app.post("/create-product", async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Internal Server Error", product: newProduct });
+      .json({ message: "Product created Successfully", product: newProduct });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal Server Error" });

@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema( // use to create models
       type: String,
       required: true,
     },
-    descrition: {
+    description: {
       type: String,
       default: "Description",
     },

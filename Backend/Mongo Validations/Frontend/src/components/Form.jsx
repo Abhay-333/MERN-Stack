@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -19,21 +20,27 @@ const Form = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    const finalData = {
-      productName: formData.productName,
-      description: formData.description,
-      category: formData.category,
-      price: {
-        amount: Number(formData.amount),
-        currency: formData.currency,
-      },
-      stock: Number(formData.stock),
-    };
+      const finalData = {
+        productName: formData.productName,
+        description: formData.description,
+        category: formData.category,
+        price: {
+          amount: Number(formData.amount),
+          currency: formData.currency,
+        },
+        stock: Number(formData.stock),
+      };
+      console.log(finalData);
 
-    console.log(finalData);
+      let res = await axios.post(`http://localhost:3000/create-product`, finalData);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -132,9 +139,7 @@ const Form = () => {
 
         {/* Stock */}
         <div>
-          <label className="block mb-2 font-medium text-zinc-300">
-            Stock
-          </label>
+          <label className="block mb-2 font-medium text-zinc-300">Stock</label>
 
           <input
             type="number"
@@ -149,7 +154,7 @@ const Form = () => {
         {/* Button */}
         <button
           type="submit"
-          className="w-full bg-white text-black font-semibold py-3 rounded-lg hover:bg-zinc-300 transition"
+          className="w-full border-white text-white font-semibold py-3 rounded-lg hover:bg-zinc-300 transition"
         >
           Add Product
         </button>
