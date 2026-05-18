@@ -3,7 +3,7 @@ const ProductModel = require("./models/product.model");
 const cors = require("cors");
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));   // middleware for cors policy
+app.use(cors({ origin: "http://localhost:5173" })); // middleware for cors policy
 app.use(express.json());
 
 app.post("/create-product", async (req, res) => {
