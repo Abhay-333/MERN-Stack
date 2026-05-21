@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const UserModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { generateAccessToken, generateRefreshToken } = require("../utils/token");
 
 const registerController = async (req, res) => {
   const { username, email, password, mobile, role } = req.body;
@@ -15,8 +16,6 @@ const registerController = async (req, res) => {
     if (isExists)
       return res.status(409).json({ message: "Email already exists." });
 
-    // const hashPassword = await bcrypt.hash(password, 10); // this is how you create a salt original password + number of rounds
-
     const newUser = await UserModel.create({
       username,
       email,
@@ -25,10 +24,26 @@ const registerController = async (req, res) => {
       role,
     });
 
-    // this is a singleton token technique
-    const token = newUser.generateJWT();
+    const accessToken = generateAccessToken(newUser._id);
+    const refreshToken = generateRefreshToken(newUser._id);
 
-    res.cookie("reg_token", token);
+    newUser.refreshToken = refreshToken; //yaha pe hum newUser ko update kr diya hai toh agli step mey hume vo update krna padhega by save()
+    await newUser.save(); // ye krna padta hai
+
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true, // this object gives our cookie storage more security securing attacks from XSS->document.cookies se attack and CSRF->frontend ke url se attack
+      // secure: true,
+      // sameSite: "strict",
+      maxAge: 15 * 60 * 1000,
+    });
+
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true, // this object gives our cookie storage more security securing attacks from XSS->document.cookies se attack and CSRF->frontend ke url se attack
+      // secure: true,
+      // sameSite: "strict",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
     return res
       .status(201)
       .json({ message: "User Created Successfully.", user: newUser });
@@ -50,8 +65,6 @@ const loginController = async (req, res) => {
     if (!isExists)
       return res.status(404).json({ message: "User email not found." });
 
-    // const comparePassword = await bcrypt.compare(password, isExists.password); // this is how you create a salt original password + number of rounds
-
     const comparePassword = isExists.comparePassword(password);
     if (!comparePassword)
       return res.status(401).json({ message: "Invalid Password." });
@@ -69,4 +82,3 @@ const loginController = async (req, res) => {
 };
 
 module.exports = { registerController, loginController };
-      //
