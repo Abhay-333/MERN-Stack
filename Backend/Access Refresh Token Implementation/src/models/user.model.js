@@ -49,12 +49,6 @@ userSchema.pre("save", function () {
   this.password = bcrypt.hashSync(this.password, 10);
 });
 
-userSchema.methods.generateJWT = function () {
-  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
-  });
-};
-
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
