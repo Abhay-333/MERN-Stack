@@ -1,7 +1,9 @@
 // Login.jsx
 import React, { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { axiosInstance } from "../utils/axiosInstance";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/auth/authSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +25,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axiosInstance.post("/auth/login", formData);
-    dispatch(addUser(res.data.user));
-    console.log(res);
+    try {
+      const res = await axiosInstance.post("/auth/login", formData);
+      // console.log(res)
+      dispatch(addUser(res.data.data));
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -41,4 +41,20 @@ const loginController = asyncHandler(async (req, res) => {
     .json(new ApiResponse("User LoggedIn Successfully.", isExisted));
 });
 
-module.exports = { registerController, loginController };
+const logoutController = asyncHandler(async (req, res) => {
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    // secure: true,
+    // sameSite: "strict",
+  });
+
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    // secure: true,
+    // sameSite: "strict",
+  });
+
+  res.status(200).json(new ApiResponse("User LoggedOut Successfully."));
+});
+
+module.exports = { registerController, loginController, logoutController };

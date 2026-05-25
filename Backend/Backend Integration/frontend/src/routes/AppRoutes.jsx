@@ -9,11 +9,21 @@ import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useEffect } from "react";
 import { axiosInstance } from "../utils/axiosInstance";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/auth/authSlice";
 
 const AppRoutes = ({ children }) => {
+  const dispatch = useDispatch()
   useEffect(() => {
     (async () => {
-      const res = axiosInstance.get("/auth/me");
+      try {
+        const res = await axiosInstance.post("/auth/me");
+        console.log(res.data.data)
+        dispatch(addUser(res.data.data))
+      // console.log(res);
+      } catch (error) {
+        console.log(error)
+      }
     })();
   }, []);
 
