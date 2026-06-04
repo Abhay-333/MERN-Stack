@@ -1,4 +1,4 @@
-const { fileUploadService } = require("../services/fileUpload.service");
+const { fileUploadService, filesUploadService } = require("../services/fileUpload.service");
 
 const fileUploadController = async (req, res) => {
   const file = req.file;
@@ -12,4 +12,17 @@ const fileUploadController = async (req, res) => {
   }
 };
 
-module.exports = { fileUploadController };
+const filesUploadController = async (req, res) => {
+  const files = req.files;
+  try {
+    const result = await filesUploadService(files   );
+    console.log(result)
+    return res
+      .status(201)
+      .json({ message: "Files Uploaded Successfully.", files: result });
+  } catch (error) {
+    console.log("error in controller", error);
+  }
+};
+
+module.exports = { fileUploadController, filesUploadController };
