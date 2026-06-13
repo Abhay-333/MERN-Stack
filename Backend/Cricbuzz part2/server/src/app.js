@@ -15,7 +15,7 @@ const createServer = () => {
   if (env.NODE_ENV === "development") app.use(morgan("dev"));
   securityMiddleware(app);
   googleOAuthMiddleware(app);
-  app.use("api/auth",authRoute)
+  app.use("/api/auth",authRoute)
   return app;
 };
 

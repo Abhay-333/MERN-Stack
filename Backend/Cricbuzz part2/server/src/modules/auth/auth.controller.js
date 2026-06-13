@@ -1,7 +1,21 @@
-import AuthService from "./auth.service"
+import AuthService from "./auth.service.js";
+import env from "../../config/env.js";
+import { app_config } from "../../constants/app.contant.js";
 
-export default class AuthController{
-    constructor(){
-        this.userService = new AuthService()
-    }
+export default class AuthController {
+  constructor() {
+    this.userService = new AuthService();
+  }
+
+  async GoogleCallback(req, res) {
+    const { accessToken, refreshToken } = await this.userService.CreateUser(
+      req.user,
+    );
+
+    res.cookie("refreshToken", refreshToken, app_config.cookie.refreshToken);
+
+    res.cookie("accessToken", accessToken, app_config.cookie.accessToken);
+
+    res.redirect(env.REDIRECT_URL);
+  }
 }

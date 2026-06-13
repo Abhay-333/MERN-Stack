@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import env from "../config/env.js"
+import env from "../config/env.js";
 
 export default function googleOAuthMiddleware(app) {
   app.use(passport.initialize());
@@ -12,8 +12,8 @@ export default function googleOAuthMiddleware(app) {
         clientSecret: env.GOOGLE_CLIENT_SECRET,
         callbackURL: env.GOOGLE_CALLBACK_URL,
       },
-      (accessToken, refreshToken, profile, cb) => {
-        return cb(null, profile);
+      (accessToken, refreshToken, profile, done) => {
+        return done(null, profile);
       },
     ),
   );

@@ -13,10 +13,13 @@ const envSchema = zod.object({
     .number()
     .default(appContants.RATELIMIT_WINDOWMS),
   CORS_ORIGIN: zod.string(),
-  JWT_SECRET:zod.string(),
-  GOOGLE_CLIENT_ID:zod.string(),
-  GOOGLE_CLIENT_SECRET:zod.string(),
-  GOOGLE_CALLBACK_URL:zod.string(),
+  JWT_SECRET: zod.string(),
+  REFRESH_TOKEN_SECRET: zod.string(),
+  ACCESS_TOKEN_SECRET: zod.string(),
+  GOOGLE_CLIENT_ID: zod.string(),
+  GOOGLE_CLIENT_SECRET: zod.string(),
+  GOOGLE_CALLBACK_URL: zod.string(),
+  REDIRECT_URL: zod.string(),
 });
 
 const parsed = envSchema.safeParse(process.env);
