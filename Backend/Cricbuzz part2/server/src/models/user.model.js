@@ -14,7 +14,7 @@ const userSchema = new Schema(
     role: { type: String, enum: Object.values(ROLES), default: ROLES.SCORER },
     isDeleted: { type: Boolean, default: false },
     picture: { type: String, default: "https://px.pixxo.io/test/user.png" },
-  },  
+  },
   { timestamps: true },
 );
 

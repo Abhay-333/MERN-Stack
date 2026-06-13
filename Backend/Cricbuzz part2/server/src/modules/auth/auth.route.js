@@ -20,4 +20,6 @@ router.get(
   authController.GoogleCallback.bind(authController),
 );
 
+router.get("/api/auth/refreshToken",authController.refreshAccessToken(req,res))
+
 export default router;

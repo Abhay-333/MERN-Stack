@@ -8,6 +8,18 @@ export default class AuthService {
     this.userRepo = new UserRepo();
   }
 
+  async refreshAccessToken(req, res) {
+    const refreshToken = res.cookies.refreshToken;
+
+    if (!refreshToken) {
+      throw new Error("Refresh Token not found.");
+    }
+
+    const payload = jwt.verify(refreshToken, env.REFRESH_TOKEN_SECRET);
+
+    jwt.sign(payload, env.ACCESS_TOKEN_SECRET, app_config.jwt.accessToken);
+  }
+
   async CreateUser(user) {
     const isExist = await this.userRepo.findByEmail(user.emails[0].value);
     let result = isExist;
@@ -27,9 +39,17 @@ export default class AuthService {
       name: user.displayName,
     };
 
-    const refreshToken = jwt.sign(data, env.REFRESH_TOKEN_SECRET,app_config.refreshToken);
+    const refreshToken = jwt.sign(
+      data,
+      env.REFRESH_TOKEN_SECRET,
+      app_config.refreshToken,
+    );
 
-    const accessToken = jwt.sign(data, env.ACCESS_TOKEN_SECRET, app_config.accessToken);
+    const accessToken = jwt.sign(
+      data,
+      env.ACCESS_TOKEN_SECRET,
+      app_config.accessToken,
+    );
 
     return { accessToken, refreshToken };
   }
