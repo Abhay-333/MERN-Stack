@@ -59,7 +59,7 @@ export const forgotPassword = async ({ email }) => {
 
   const resetLink = `http://localhost:5000/api/auth/reset-password/${rawToken}`;
 
-  let mailSyntax = emailTemp(user, resetLink);
+  let mailSyntax = emailTemp(user.username, resetLink);
   await sendEmail(env.APP_EMAIL, "Reset your password", mailSyntax);
 
   return {
