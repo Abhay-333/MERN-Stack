@@ -2,20 +2,22 @@ import express from "express";
 import {
   createLink,
   getLinksByUsername,
-//   getLinkById,
-//   updateLink,
-//   deleteLink,
+  //   getLinkById,
+  //   updateLink,
+  //   deleteLink,
 } from "../controllers/link.controller.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
+
 // import validateRequest from "../middlewares/validateRequest.js";
 // import { linkValidation } from "../validators/link.validators.js";
 
 const router = express.Router();
 
-router.post("/", createLink);
+router.post("/", authMiddleware, createLink);
 
 // router.get("/", getLinks);
 
-router.get("/user/:username", getLinksByUsername);
+router.get("/user/:username", authMiddleware, getLinksByUsername);
 
 // router.get("/:id", getLinkById);
 
