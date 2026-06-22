@@ -12,8 +12,10 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchLinks = async () => {
       try {
+      
         const response = await linkService.getLinksByUsername(username);
-        // Handle both direct array and object with links property
+        console.log(response)
+          // Handle both direct array and object with links property
         const linksData = Array.isArray(response.data) ? response.data : response.data.links;
         setLinks(linksData || []);
       } catch (err) {

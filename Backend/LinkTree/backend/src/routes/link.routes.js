@@ -15,9 +15,9 @@ const router = express.Router();
 
 router.post("/", authMiddleware, createLink);
 
-// router.get("/", getLinks);
-
 router.get("/user/:username", authMiddleware, getLinksByUsername);
+
+// router.get("/", getLinks);
 
 // router.get("/:id", getLinkById);
 

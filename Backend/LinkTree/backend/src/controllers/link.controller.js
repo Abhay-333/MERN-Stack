@@ -1,4 +1,5 @@
 import LinkModel from "../models/link.model.js";
+import User from "../models/user.model.js";
 
 export const createLink = async (req, res) => {
   try {
@@ -28,7 +29,7 @@ export const createLink = async (req, res) => {
     }
 
     const newLink = new LinkModel({
-      user: user._id,
+      user: user.id,
       title,
       url,
     });
@@ -63,6 +64,7 @@ export const getLinksByUsername = async (req, res) => {
     }
 
     const links = await LinkModel.find({ user: user._id });
+    console.log("Fetched links for user:", username, links);
 
     return res
       .status(200)

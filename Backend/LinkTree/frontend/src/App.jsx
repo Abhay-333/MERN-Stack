@@ -31,7 +31,7 @@ const App = () => {
           />
           
           {/* Public Profile Route */}
-          <Route path="/profile/:username" element={<ProfilePage />} />
+          <Route path="/user/:username" element={<ProfilePage />} />
           
           {/* Catch all */}
           <Route path="*" element={<Navigate to="/" replace />} />

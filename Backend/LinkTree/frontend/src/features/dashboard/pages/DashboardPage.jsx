@@ -33,7 +33,7 @@ const DashboardPage = () => {
           <div className="flex gap-4 items-center">
             <span className="text-gray-700">Welcome, <span className="font-semibold">{user?.username}</span></span>
             <button
-              onClick={() => navigate(`/profile/${user?.username}`)}
+              onClick={() => navigate(`/user/${user?.username}`)}
               className="text-blue-600 hover:underline font-semibold"
             >
               View Profile
